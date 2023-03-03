@@ -1,4 +1,5 @@
 import { TempGameDiv, TempButton } from "./TempGame.styles";
+import { userID } from "../../utils";
 
 
 import { UserInfo } from "../../types";
@@ -9,7 +10,7 @@ const TempGame = (props: {userData: UserInfo[], setUserData:any }) => {
 
   const improveScore = () => {
     let newUserData = [...userData];
-    const you = newUserData.find(user => user.name === "You");
+    const you = newUserData.find(user => user.id === userID);
     if (you) {
       you.msTime -= 5000;
     }

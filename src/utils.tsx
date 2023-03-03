@@ -1,5 +1,7 @@
 import { UserInfo } from "./types";
 
+export const userID = 7283;
+
 export const convertTime = (msTime:number) => {
     let numerator = msTime;
     const minutes = Math.floor(numerator/60000);

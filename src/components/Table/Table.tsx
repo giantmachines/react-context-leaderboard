@@ -17,7 +17,7 @@ const Table = (props : {userData:UserInfo[]}) => {
         </div>
         {userData.map((user, idx) => {
           return(
-            <div key={user.name} className="row">
+            <div key={user.id} className="row">
               <div style={{textAlign:'right'}} className="cell">#{idx+1}</div>
               <div className="cell">{user.name}</div>
               <div style={{textAlign:'center'}} className="cell">{convertTime(user.msTime)}</div>

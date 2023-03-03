@@ -1,18 +1,14 @@
-# Grid & Flexbox
+# React Context
 
-## Organizing Organizr
+## Memory Matching Game Leader Board
 
-## Objectives
+## Objectives (SWBATS)
 
-- Use flexbox to create horizontal and vertical layouts.
-- Use grid to create 2D layouts.
-- Use grid to create rigid horizontal and vertical layouts.
-- Nest flexbox containers to create 2D layouts.
-- Use the styled components library to limit the cascade.
-- Correctly identify situations where flexbox and grid are not the ideal layout solutions.
+- {}
 
 ## Why?
 
+{tbe}
 Layout is complicated, and the more creative your layouts get, the more thoughtful you have to be about which layout tools are the best suited to handle a given job. For the most part, this lab is an opportunity to think about when to use Grid, when to use Flexbox, when to use nested combinations of both tools, and the importance of not over complicating things that can be accomplished through simpler means like an HTML table. 
 
 ## Setup
@@ -27,7 +23,7 @@ We're just building the layout for the front-end, so some sample data is already
 
 ## Exercises
 
-### 1. Make the navigational menu bar
+### 1. Change the lab to use React Context
 
 All the pieces of the NavMenu have been built, but right now there aren't any rules for how to lay out the menu bar.
 
