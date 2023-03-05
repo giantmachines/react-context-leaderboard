@@ -5,15 +5,14 @@ import TempGame from "../TempGame/TempGame";
 
 
 import { UserInfo } from "../../types";
+import TempGame2 from "../TempGame2/TempGame2";
 
-const Display = (props : {userData:UserInfo[], setUserData:any}) => {
-
-  const {userData, setUserData} = props;
+const Display = () => {
 
   return (
     <DisplayDiv>
-      <TempGame userData={userData} setUserData={setUserData}/>
-      <LeaderBoard userData={userData}/>
+      <TempGame2/>
+      <LeaderBoard/>
     </DisplayDiv>
   );
 };

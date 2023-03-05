@@ -2,11 +2,14 @@ import { TempGameDiv, TempButton } from "./TempGame.styles";
 import { userID } from "../../utils";
 
 
-import { UserInfo } from "../../types";
+import { UserInfo, UsersContextType } from "../../types";
+import { useContext } from "react";
+import { UsersContext } from "../App/App";
 
-const TempGame = (props: {userData: UserInfo[], setUserData:any }) => {
+const TempGame = () => {
 
-  const {userData, setUserData} = props;
+  const state: UsersContextType = useContext(UsersContext);
+  const {userData, setUserData} = state;
 
   const improveScore = () => {
     let newUserData = [...userData];

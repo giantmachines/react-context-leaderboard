@@ -3,3 +3,8 @@ export interface UserInfo {
   name: string;
   msTime: number;
 }
+
+export interface UsersContextType {
+  userData: UserInfo[];
+  setUserData:any;
+}

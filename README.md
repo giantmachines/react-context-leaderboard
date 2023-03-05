@@ -1,15 +1,18 @@
 # React Context
 
-## Memory Matching Game Leader Board
+## Memory Matching Game: Leader Board
 
 ## Objectives (SWBATS)
 
-- {}
+- Incorporate React Context to substitute for drilling state hooks to child components.
+- Combine the use of React, Typescript, State Hooks, and React Context in one lab.
+- Navigate, refactor and add to a completed application.
 
 ## Why?
 
-{tbe}
-Layout is complicated, and the more creative your layouts get, the more thoughtful you have to be about which layout tools are the best suited to handle a given job. For the most part, this lab is an opportunity to think about when to use Grid, when to use Flexbox, when to use nested combinations of both tools, and the importance of not over complicating things that can be accomplished through simpler means like an HTML table. 
+Drilling state hook variables is bad practice and tedious. If a great grandparent component, for example, creates state that is used in a great grandchild component but not in any intermediate components, there is no need for the intermediate components to see such a variable. 
+
+React Context allows for any nested component to access state variables by and only by importing them.  
 
 ## Setup
 
@@ -17,84 +20,41 @@ This is a standard react project - first run `npm install` and then run `npm run
 
 ## Framing
 
-We're building a task-layout board called **Organizr**, and we're going to do it all: Kanban Boards, Tables, Tiles, and maybe even a Gantt chart if there's time.
+We're building an app that allows a user to play a matching game. The leader board for other players is displayed on the sidebar at all times. The game itself is just a prototype to ensure that the leader board is updated appropriately. Later in the lab, after adding React Context, you will replace the prototype with one more prototype before creating the actual game yourself
 
-We're just building the layout for the front-end, so some sample data is already loaded in - other members of our team will build the back-end (and any necessary transformation layers) to connect to real user data later.
+When spinning up the website, you'll notice that the most of the functionality is working as intended. The button, when clicked, updates your best time by 5 seconds. This 1st prototype is in the component `TempGame`. Follow the instructions below to change this lab from drilling state hooks to using React Context.
 
 ## Exercises
 
-### 1. Change the lab to use React Context
+### 1. Change the lab to use React Context*
 
-All the pieces of the NavMenu have been built, but right now there aren't any rules for how to lay out the menu bar.
+- Call `createContext` outside of your App component to create a context. [Check out the docs if needed](https://beta.reactjs.org/reference/react/createContext)
+- The `useState` variable for `userData` is already created, so wrap your components into a _context provider_ to specify the value of this context for all components inside. [See an example here](https://beta.reactjs.org/reference/react/createContext) _NOTE: the value you pass should be an object that holds both the state variable and the setState function. _
+- In the child components that need the `userData` state variable or `setUserData`, call `useContext` at the top level of your component and unpack which ever of the 2 you need. [More information on useContext here](https://beta.reactjs.org/reference/react/useContext)
 
-The finished product should look something like this:
+### 2. Take a second to sort the rankings
 
-![Nav Menu](./public/navMenu.png)
+- Find the component that it is mapping over `userData` to print the rows for the leader board. 
+- Adjust the code to sort the rankings by `msTime` before iterating.
+- HINT: [This resource will do the trick](https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/)
 
-You're welcome to use any layout tools you like, but the example shown above can be accomplished exclusively by adding flex (and related properties), margin, and padding to the existing classes. You can fine-tune the visuals with some borders, outlines, border-radii.
+### 3. Replace TempGame with TempGame2*
 
-### 2. Make the TableView
+- In `Display`, change `TempGame` to `TempGame2`. Make sure you now see 3 buttons: start, stop, and reset.
+- Test the new "game". When you press start (wait 5-10 seconds) and press stop. Your personal best time should update. 
+- In TempGame2, the time is being saved in the `currentTime` state variable. Use **React Context** to create that variable in `App` and get the stop clock to show next to personal best in `PersonalStats`. 
 
-The table is supposed to look like this:
+### 4. Extra Challenges
 
-![Table View Preview](./public/tableView.png)
+**Mild**
+- Add a 3rd personal stat that highlights your rank number. _HINT: You'll have to edit the typescript for `userData`, and give everyone a default rank in `user_data.js`._
 
-The first attempt to style it used Grid, which was really difficult because it didn't play nicely with the `.map` property used to spell out the cells - React requires that a map's callback return a single jsx element, but wrapping an entire return in a row makes it hard to render with CSS Grid, which assumes that all members of the grid are direct children of the parent element.
+**Medium\***
+- Create a component called `Game`. It should play the classic [matching game found here](https://www.memozor.com/memory-games/big-or-giant/everyday-objects). Make a 4 by 4 grid of buttons. The buttons should flip and un-flip like the matching game does. Here's some React Context functionality to be mindful of:
+    - When the first button is clicked, the timer should start.
+    - When the game is won, the timer should stop and the total time should be saved and compared to the current best
 
-The second attempt to style it uses Flexbox, which is where the code is currently. The idea of having each row be a flex parent is a sound one, but since each row operates independently of the others, there's not a way to ensure that the element sizing in one row corresponds to the element sizing of the next. It's definitely not working.
+    Use the resource linked to see all other functionality that should be applied.
 
-The dev team right now is debating two possible solutions:
-
-1. Render the entire table as an HTML `table` element, with corresponding `tr`, `td`, and `th` elements to make up the body of that table. Then adjust the styles to match the styling in the above preview.
-2. Render each row in the table as an instance of a grid styled component, and ensure that the template of that styled component's columns are rigid enough so that each row of the table is rendered with identical dimensions.
-
-You can decide which of these routes to pursue. Either way, you'll need to refactor the `className` method of styling in favor of styled components, and you'll likely want to change some elements from generic `div`s to other more specific elements.
-
-### 3. Make the TileView grid of cards.
-
-The tile view should look like this:
-
-![Tile View Preview](./public/tileView.png)
-
-It's important to note that this display won't always be four cards across. The number of columns should grow and shrink according to the user's display. The next task will be about sizing or resizing the individual cards, so try to envision the adjustments necessary with these half-finished placeholder cards for now.
-
-### 4. Make the individual Cards
-
-Refer to the above preview to see the desired output for individual cards.
-
-The individual cards need a fair bit of work. Here's how you might want to break it down:
-
-1. Fiddle with the border, padding, and margins to get the cards shaped a bit more like the preview. Pay attention to small details like the margin-bottom of the tiny headers to get a satisfying result.
-2. Display the remainder of the non-numerical information on the cards.
-3. Add the budget grid to the bottom of each card. As before this is accomplishable with both a table and a grid, but is probably easiest with a CSS Grid layout.
-
-### 5. Update the Status and Priority Badges
-
-The Status and Priority badges are meant to render conditionally with specific colors everywhere they're used. Fixing this throughout your program will require a few steps:
-
-1. Update your code so that every time a status or priority is displayed, it does so using the corresponding component from the `Badges` folder.
-2. Update the badge components so that they pass their props on to the styled component.
-3. Reconfigure the background color of the styled component so that it renders conditionally based on the status or priority of the given component. The recommended colors are included as comments in `Badges.styles.ts`.
-
-### 6. Make the Kanban board
-
-Here's the ideal Kanban Board:
-
-![Kanban Board Preview](./public/kanbanView.png)
-
-This view doesn't need drag-and-drop functionality just yet, but it does need to render correctly. Here are some recommended ways to break that down.
-
-1. Put a column on the page for each of the statuses that will render to the page.
-2. Come up with a way to sort or filter the list of Tasks such that each column only renders out the corresponding cards. This will likely reveal some errors in your initial assumptions about how to set up your columns.
-3. Adjust the columns so that they match the mockup above.
-4. We need an abbreviated version of the cards - we'll add an additional boolean prop like `abbreviated` or `full` to help signal which version of the card we want. Modify the Card component to render these more abbreviated versions of the cards for the kanban view, but displays full cards for the tiled view.
-
-### 7. Make the Gantt chart, or add other Extension Features.
-
-At this point, you're welcome to add in any of the following features. They're all on the roadmap, so any of them will be useful. They do not need to be attempted in any specific order.
-
-1. The [Gantt](https://en.wikipedia.org/wiki/Gantt_chart) chart hasn't been mocked up yet, but you're welcome to give it a try. There's a date field there, but it hasn't been parsed into a Date object yet, so that's a good place to start.
-2. The TableView should sort the data when you click on a column header. Add that feature.
-3. The TileView should have some GUI elements to allow you to filter out some of the cards. For example, there could be buttons or checkboxes that let you hide less urgent tasks, or a live search text field that filters out non-matching cards.
-4. The columns in the TableView should be resizeable.
-5. We should be able to scroll to the right and left in the TableView, especially on smaller displays.
+**Spicy**
+- Add a modal pop up to the page that immediately asks the user to input their name before playing the game. Once they do, "You" should be updated to the inputted name, and the modal should disappear.
