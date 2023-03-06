@@ -41,7 +41,8 @@ When spinning up the website, you'll notice that the most of the functionality i
 ### 3. Replace TempGame with TempGame2*
 
 - In `Display`, change `TempGame` to `TempGame2`. Make sure you now see 3 buttons: start, stop, and reset.
-- Test the new "game". When you press start (wait 5-10 seconds) and press stop. Your personal best time should update. 
+- You may immediately have errors. Change `UsersContext` to be what ever you named your context in `App`. After correcting the 2 lines...
+- Test the new "game". When you press start (wait 5-10 seconds) and press stop. Your personal best time should update! 
 - In TempGame2, the time is being saved in the `currentTime` state variable. Use **React Context** to create that variable in `App` and get the stop clock to show next to personal best in `PersonalStats`. 
 
 ### 4. Extra Challenges
