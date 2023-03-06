@@ -7,7 +7,6 @@ import { idxIncrement, userID } from "../../utils";
 
 const App = () => {
   const [userData, setUserData] = useState<UserInfo[]>(user_data);
-  const [modalIsOpen, setModalIsOpen] = useState<Boolean>(true);
 
   /* Every 2 seconds, update users' scores */
   let timer:NodeJS.Timer;
