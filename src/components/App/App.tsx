@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Display from "../Display/Display";
 import { AppDiv, Title } from "./App.styles";
 import { UserInfo } from "../../types";
 import { user_data } from "../../user_data";
 import { idxIncrement, userID } from "../../utils";
 
+
 const App = () => {
   const [userData, setUserData] = useState<UserInfo[]>(user_data);
 
-  /* Every 2 seconds, update users' scores */
-  let timer:NodeJS.Timer;
+  /* IGNORE THIS  - Every 2 seconds, update users' scores */
+  let timer = useRef<NodeJS.Timer|undefined>(undefined);
   useEffect(()=>{
-    timer = setInterval(() => {
+    timer.current = setInterval(() => {
       let newUserData = [...userData];
       idxIncrement(newUserData).forEach((element) => {
         let user = newUserData[element.idx];
@@ -22,7 +23,7 @@ const App = () => {
       setUserData(newUserData);
     }, 2000);
 
-    return ()=>clearInterval(timer)
+    return ()=> timer.current && clearInterval(timer.current)
   },[])
 
 

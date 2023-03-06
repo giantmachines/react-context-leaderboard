@@ -1,10 +1,8 @@
 import { DisplayDiv } from "./Display.styles";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import TempGame from "../TempGame/TempGame";
-// import Game from "../Game/Game";
-
-
 import { UserInfo } from "../../types";
+
 
 const Display = (props : {userData:UserInfo[], setUserData:any}) => {
 

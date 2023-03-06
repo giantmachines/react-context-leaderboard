@@ -1,7 +1,7 @@
 import { TableViewRoot } from "./Table.styles";
 import { convertTime } from "../../utils";
-
 import { UserInfo } from "../../types";
+
 
 const Table = (props : {userData:UserInfo[]}) => {
 

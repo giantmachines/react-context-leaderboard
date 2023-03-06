@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
-import { State, StateContext } from './AppContextTemplate';
+import { StateType, StateContext } from './AppContextTemplate';
 
 
 const Component = () => {
 
     // Step 1 - import the telegraphed state (connect to wifi)
-    const state: State = useContext(StateContext);
-    // const {number, word} = state;
+    const state: StateType = useContext(StateContext);
+    const {number, names} = state;
+    // Alternatively...
     // const {number, word}: State = useContext(StateContext);
 
     return (
         <div>
-            {/* Step 2 - Access Netflix and other apps */}
-            Component has {state.number} and {state.word}
+            Component has {number} and {names}
         </div>
     )
 }

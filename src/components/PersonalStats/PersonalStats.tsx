@@ -1,9 +1,7 @@
 import { PersonalStatsDiv } from "./PersonalStats.styles";
 import { convertTime, userID } from "../../utils";
-
-
 import { UserInfo } from "../../types";
-import { useEffect } from "react";
+
 
 const PersonalStats = (props : {userData: UserInfo[]}) => {
 

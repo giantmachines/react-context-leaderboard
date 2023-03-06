@@ -1,8 +1,7 @@
 import { TempGameDiv, TempButton } from "./TempGame.styles";
 import { userID } from "../../utils";
-
-
 import { UserInfo } from "../../types";
+
 
 const TempGame = (props: {userData: UserInfo[], setUserData:any }) => {
 

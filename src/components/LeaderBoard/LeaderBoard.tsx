@@ -1,9 +1,8 @@
 import { LeaderBoardDiv, LeaderBoardTitle } from "./LeaderBoard.styles";
 import Table from "../Table/Table"
 import PersonalStats from "../PersonalStats/PersonalStats"
-
-
 import { UserInfo } from "../../types";
+
 
 const LeaderBoard = (props : {userData:UserInfo[]}) => {
 

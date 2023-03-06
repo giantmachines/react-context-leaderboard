@@ -1,9 +1,12 @@
 import { TempGame2Div, TempButton } from "./TempGame2.styles";
 import { userID } from "../../utils";
-// import { UsersContextType } from "../../types";
 import { useContext, useEffect, useState } from "react";
 import { UserInfo } from "../../types";
+
+// import { UsersContextType } from "../../types";
 // import { UsersContext } from "../App/App";
+
+
 
 const TempGame2 = () => {
 
@@ -11,12 +14,11 @@ const TempGame2 = () => {
   // const {userData, setUserData} = state;
   const [userData, setUserData] = useState<UserInfo[]>([]);   // DELETE ME! - Uncomment the rest
 
-  const [currentTime, setCurrentTime] = useState(10000000);
 
+  const [currentTime, setCurrentTime] = useState(10000000);
   const [timerStarted, setTimerStarted] = useState(false);
   const [timerID, setTimerID] = useState<NodeJS.Timer>();
 
-  // let timerID: NodeJS.Timer;
   useEffect(()=> {
     if(timerStarted){
       const startTime = Date.now();
