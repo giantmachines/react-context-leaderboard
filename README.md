@@ -2,7 +2,7 @@
 
 ## Memory Matching Game: Leader Board
 
-## Objectives (SWBATS)
+## Objectives
 
 - Incorporate React Context to substitute for drilling state hooks to child components.
 - Combine the use of React, Typescript, State Hooks, and React Context in one lab.
