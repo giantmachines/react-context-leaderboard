@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Display from "../Display/Display";
-import Modal from "../Modal/Modal";
 import { AppDiv, Title } from "./App.styles";
 import { UserInfo } from "../../types";
 import { user_data } from "../../user_data";
@@ -32,7 +31,6 @@ const App = () => {
     <AppDiv>
       <Title>🤯 Memory Matching Game</Title>
       <Display userData={userData} setUserData={setUserData} />
-      {modalIsOpen ? <Modal userData={userData} setUserData={setUserData} setModalIsOpen={setModalIsOpen}/> : ''}
     </AppDiv>
   );
 };

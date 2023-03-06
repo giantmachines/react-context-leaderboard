@@ -1,13 +1,16 @@
 import { TempGame2Div, TempButton } from "./TempGame2.styles";
 import { userID } from "../../utils";
-import { UsersContextType } from "../../types";
+// import { UsersContextType } from "../../types";
 import { useContext, useEffect, useState } from "react";
-import { UsersContext } from "../App/App";
+import { UserInfo } from "../../types";
+// import { UsersContext } from "../App/App";
 
 const TempGame2 = () => {
 
-  const state: UsersContextType = useContext(UsersContext);
-  const {userData, setUserData} = state;
+  // const state: UsersContextType = useContext(UsersContext);
+  // const {userData, setUserData} = state;
+  const [userData, setUserData] = useState<UserInfo[]>([]);   // DELETE ME! - Uncomment the rest
+
   const [currentTime, setCurrentTime] = useState(10000000);
 
   const [timerStarted, setTimerStarted] = useState(false);
