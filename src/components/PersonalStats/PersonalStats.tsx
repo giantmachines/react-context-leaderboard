@@ -8,15 +8,21 @@ import { UsersContextType } from "../../types";
 const PersonalStats = () => {
 
   const state: UsersContextType = useContext(UsersContext);
-  const {userData} = state;
+  const {userData, currentTime} = state;
 
   const you = userData.find(user => user.id === userID);
   const yourTime = you ? you.msTime : 0;
 
   return (
     <PersonalStatsDiv>
-      <h1>Personal Best</h1>
-      <p>{convertTime(yourTime)}</p>
+      <div>
+        <h1>Current Game</h1>
+        <p>{convertTime(currentTime)}</p>
+      </div>
+      <div>
+        <h1>Personal Best</h1>
+        <p>{convertTime(yourTime)}</p>
+      </div>
     </PersonalStatsDiv>
   );
 };

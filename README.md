@@ -2,6 +2,8 @@
 
 ## Memory Matching Game: Leader Board
 
+NOTE: NOT THE SAME AS THE MAIN BRANCH -- TO BE UPDATED
+
 ## Objectives
 
 - Incorporate React Context to substitute for drilling state hooks to child components.

@@ -7,9 +7,8 @@ import { UsersContext } from "../App/App";
 const TempGame2 = () => {
 
   const state: UsersContextType = useContext(UsersContext);
-  const {userData, setUserData} = state;
+  const {userData, setUserData, currentTime, setCurrentTime} = state;
 
-  const [currentTime, setCurrentTime] = useState(10000000);
   const [timerStarted, setTimerStarted] = useState(false);
   const [timerID, setTimerID] = useState<NodeJS.Timer>();
 
@@ -28,7 +27,7 @@ const TempGame2 = () => {
   }
   const restartTimer = () => {
     setTimerStarted(false);
-    setCurrentTime(10000000);
+    setCurrentTime(0);
     if(timerID) clearInterval(timerID);
   }
 

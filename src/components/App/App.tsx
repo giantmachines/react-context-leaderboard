@@ -1,24 +1,21 @@
 import { useEffect, useState, useRef } from "react";
 import Display from "../Display/Display";
 import { AppDiv, Title } from "./App.styles";
-import { UserInfo } from "../../types";
+import { UserInfo, UsersContextType } from "../../types";
 import { user_data } from "../../user_data";
 import { idxIncrement, userID } from "../../utils";
 import { createContext } from 'react';
 
-
-export interface UsersContextType {
-  userData:UserInfo[];
-  setUserData:(userData:UserInfo[]) => void;
-}
-
 export const UsersContext = createContext<UsersContextType>({
   userData:[],
   setUserData:(userData:UserInfo[]) => undefined,
+  currentTime: 0,
+  setCurrentTime:(currentTime:number) => undefined,
 });
 
 const App = () => {
   const [userData, setUserData] = useState<UserInfo[]>(user_data);
+  const [currentTime, setCurrentTime] = useState(0);
 
   /* IGNORE THIS  - Every 2 seconds, update users' scores */
   let timer = useRef<NodeJS.Timer|undefined>(undefined);
@@ -42,6 +39,8 @@ const App = () => {
     <UsersContext.Provider value={{
       userData: userData, 
       setUserData: (uD) => {setUserData(uD)},
+      currentTime: currentTime,
+      setCurrentTime: (c) => {setCurrentTime(c)},
     }}>
       <AppDiv>
         <Title>🤯 Memory Matching Game</Title>
