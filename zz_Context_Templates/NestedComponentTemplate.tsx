@@ -11,6 +11,7 @@ const Component = () => {
 
     return (
         <div>
+            {/* Step 2 - Access Netflix and other apps */}
             Component has {state.number} and {state.word}
         </div>
     )

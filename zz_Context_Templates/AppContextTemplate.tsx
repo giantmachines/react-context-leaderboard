@@ -1,14 +1,14 @@
 import React, { createContext, useState } from 'react';
 import Component from './NestedComponentTemplate';
 
-// Step 4? - At some point incorporate Typescript
+// Step 4 - At some point incorporate Typescript
 export interface State {
     number?: number;
     word?: string;
 }
 
 // Step 1 - Initialize the context variable (set up your router)
-// Note: we're exporting this variable (like sending a signal)
+// Note: we're exporting this variable (like sending an access code)
 export const StateContext = createContext<State>({});
 
 const App = () => {
@@ -18,8 +18,8 @@ const App = () => {
     const [word, setWord] = useState<string>("");
 
     return (
-        // Step 3 - wrap app in Provider to send context to children (send Netflix to everyone connected to wifi)
-        // Note: multiple data usually sent as object; can send one thing.
+        // Step 3 - wrap app in Provider to send context to children (send signal to everyone connected to wifi)
+        // Note: multiple data usually sent as object; can alternatively send one thing.
         <StateContext.Provider value={{number:number, word:word}}>
             <div>
                 <Component />
