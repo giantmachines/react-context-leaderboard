@@ -1,6 +1,5 @@
 import { PersonalStatsDiv } from "./PersonalStats.styles";
 import { convertTime, userID } from "../../utils";
-import { UserInfo } from "../../types";
 import { useContext } from "react";
 import { UsersContext } from "../App/App";
 import { UsersContextType } from "../../types";

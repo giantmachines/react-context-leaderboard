@@ -1,22 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Display from "../Display/Display";
-import Modal from "../Modal/Modal";
 import { AppDiv, Title } from "./App.styles";
 import { UserInfo } from "../../types";
 import { user_data } from "../../user_data";
 import { idxIncrement, userID } from "../../utils";
 import { createContext } from 'react';
 
-export const UsersContext: UserInfo[]|any = createContext({});
+
+export interface UsersContextType {
+  userData:UserInfo[];
+  setUserData:(userData:UserInfo[]) => void;
+}
+
+export const UsersContext = createContext<UsersContextType>({
+  userData:[],
+  setUserData:(userData:UserInfo[]) => undefined,
+});
 
 const App = () => {
   const [userData, setUserData] = useState<UserInfo[]>(user_data);
-  // const [modalIsOpen, setModalIsOpen] = useState<Boolean>(true);
 
-  /* Every 2 seconds, update users' scores */
-  let timer:NodeJS.Timer;
+  /* IGNORE THIS  - Every 2 seconds, update users' scores */
+  let timer = useRef<NodeJS.Timer|undefined>(undefined);
   useEffect(()=>{
-    timer = setInterval(() => {
+    timer.current = setInterval(() => {
       let newUserData = [...userData];
       idxIncrement(newUserData).forEach((element) => {
         let user = newUserData[element.idx];
@@ -27,12 +34,15 @@ const App = () => {
       setUserData(newUserData);
     }, 2000);
 
-    return ()=>clearInterval(timer)
+    return ()=> timer.current && clearInterval(timer.current)
   },[])
 
 
   return (
-    <UsersContext.Provider value={{userData:userData, setUserData:setUserData}}>
+    <UsersContext.Provider value={{
+      userData: userData, 
+      setUserData: (uD) => {setUserData(uD)},
+    }}>
       <AppDiv>
         <Title>🤯 Memory Matching Game</Title>
         <Display/>

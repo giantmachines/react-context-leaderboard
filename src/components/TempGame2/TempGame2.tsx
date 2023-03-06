@@ -8,12 +8,11 @@ const TempGame2 = () => {
 
   const state: UsersContextType = useContext(UsersContext);
   const {userData, setUserData} = state;
-  const [currentTime, setCurrentTime] = useState(10000000);
 
+  const [currentTime, setCurrentTime] = useState(10000000);
   const [timerStarted, setTimerStarted] = useState(false);
   const [timerID, setTimerID] = useState<NodeJS.Timer>();
 
-  // let timerID: NodeJS.Timer;
   useEffect(()=> {
     if(timerStarted){
       const startTime = Date.now();
