@@ -12,8 +12,10 @@ const PersonalStats = (props : {userData: UserInfo[]}) => {
 
   return (
     <PersonalStatsDiv>
-      <h1>Personal Best</h1>
-      <p>{convertTime(yourTime)}</p>
+      <div>
+        <h1>Personal Best</h1>
+        <p>{convertTime(yourTime)}</p>
+      </div>
     </PersonalStatsDiv>
   );
 };

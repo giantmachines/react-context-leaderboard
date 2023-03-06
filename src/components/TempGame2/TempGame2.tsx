@@ -15,7 +15,7 @@ const TempGame2 = () => {
   const [userData, setUserData] = useState<UserInfo[]>([]);   // DELETE ME! - Uncomment the rest
 
 
-  const [currentTime, setCurrentTime] = useState(10000000);
+  const [currentTime, setCurrentTime] = useState(0);
   const [timerStarted, setTimerStarted] = useState(false);
   const [timerID, setTimerID] = useState<NodeJS.Timer>();
 
@@ -34,7 +34,7 @@ const TempGame2 = () => {
   }
   const restartTimer = () => {
     setTimerStarted(false);
-    setCurrentTime(10000000);
+    setCurrentTime(0);
     if(timerID) clearInterval(timerID);
   }
 

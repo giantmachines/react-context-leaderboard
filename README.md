@@ -122,6 +122,7 @@ HINT: [This resource will help](https://flaviocopes.com/how-to-sort-array-of-obj
 _NOTE: In `TempGame2`, the time is being saved in the `currentTime` local state variable. This is okay if you want this component (and any potential child component of `TempGame2`) to be the only one that sees `currentTime`, **but** the goal is to have this timer/stop-watch visible in the `LeaderBoard` component, a "cousin" component._
 
 4. Use **React Context** to create that variable in `App` and get the stop clock to show next to personal best in `PersonalStats`.
+![Time Picture](./TimerPicture.png)
 
 ### D. Extra Challenges
 
